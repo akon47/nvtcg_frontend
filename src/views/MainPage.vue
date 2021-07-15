@@ -43,7 +43,7 @@
             >Overlay Image</label
           >
           <div class="filebox">
-            <label for="attachment" >Upload</label>
+            <label for="attachment">Upload</label>
             <input
               @change="handleFileChange"
               id="attachment"
@@ -75,14 +75,25 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    this.$store.dispatch("discoveryCams");
-
-    const { data } = await getTarget();
-    this.target = { hostname: data.hostname, port: data.port };
-    this.username = data.username;
-    this.password = data.password;
-
-    this.isLoading = false;
+    try {
+      this.$store.dispatch("discoveryCams");
+      const { data } = await getTarget();
+      this.target = { hostname: data.hostname, port: data.port };
+      this.username = data.username;
+      this.password = data.password;
+    } catch (error) {
+      switch (error.response.status) {
+        case 401:
+          break;
+        default:
+          alert(error.message);
+          break;
+      }
+      this.$store.dispatch("Signout");
+      this.$router.push("/");
+    } finally {
+      this.isLoading = false;
+    }
   },
   methods: {
     async submitForm() {
@@ -104,7 +115,7 @@ export default {
     async handleFileChange(e) {
       const file = e.target.files[0];
       try {
-        if(file) {
+        if (file) {
           this.isLoading = true;
           await uploadOverlayImage(file);
           this.isLoading = false;
@@ -130,5 +141,4 @@ export default {
 a:hover {
   text-decoration: underline;
 }
-
 </style>

@@ -28,6 +28,11 @@ const router = new VueRouter({
             meta: { authRequired: true }
         },
         {
+            path: '/editor',
+            component: () => import('../views/EditorPage.vue'),
+            meta: { authRequired: true }
+        },
+        {
             path: '*',
             component: () => import('../views/NotFoundPage.vue'),
         },

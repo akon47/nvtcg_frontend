@@ -6,22 +6,10 @@
         <span v-if="isUserLogin">by admin</span>
       </router-link>
     </div>
-    <div v-else class="mobile-header">
-      <font-awesome-icon
-        :icon="['fas', 'bars']"
-        class="header-icon"
-        @click.stop="selectChannelList"
-        :class="{selected: isChannelAreaSelected}"
-      />
-      <font-awesome-icon
-        :icon="['fas', 'users']"
-        class="header-icon"
-        @click.stop="selectUserList"
-        :class="{selected: isUserAreaSelected}"
-      />
-    </div>
     <div class="navigations">
       <template v-if="isUserLogin">
+        <router-link to="/main">Home</router-link>
+        <router-link to="/editor">Editor</router-link>
         <a href="javascript:;" @click="logoutUser" class="logout-button">
           Logout
         </a>
