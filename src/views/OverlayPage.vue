@@ -172,6 +172,7 @@ export default {
   border: 2px solid rgb(43, 45, 49);
   overflow: auto;
   overflow-x: hidden;
+  min-height: 80px;
   height: calc(100vh - 600px);
 }
 

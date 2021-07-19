@@ -204,6 +204,7 @@ a:hover {
   border: 0 solid #dae1e7;
   width: 100%;
   transition: 0.2s;
+  color: white;
 }
 .btn:hover {
   background: #4752c4;

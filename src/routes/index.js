@@ -33,6 +33,11 @@ const router = new VueRouter({
             meta: { authRequired: true }
         },
         {
+            path: '/network',
+            component: () => import('../views/NetworkPage.vue'),
+            meta: { authRequired: true }
+        },
+        {
             path: '*',
             component: () => import('../views/NotFoundPage.vue'),
         },

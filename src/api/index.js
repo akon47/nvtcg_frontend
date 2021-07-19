@@ -24,3 +24,4 @@ export function getBaseApiUrl() {
 export const instance = createInstance();
 export const onvif = createInstanceWithAuth('onvif');
 export const overlay = createInstanceWithAuth('overlay');
+export const network = createInstanceWithAuth('network');

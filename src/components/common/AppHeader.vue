@@ -10,6 +10,7 @@
       <template v-if="isUserLogin">
         <router-link to="/main">Home</router-link>
         <router-link to="/overlay">Overlay</router-link>
+        <router-link to="/network">Network</router-link>
         <a href="javascript:;" @click="logoutUser" class="logout-button">
           Logout
         </a>
