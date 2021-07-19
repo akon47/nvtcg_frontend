@@ -209,7 +209,7 @@ a:hover {
   background: #4752c4;
 }
 
-.btn.disabled {
+.btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

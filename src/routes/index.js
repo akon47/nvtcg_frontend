@@ -28,8 +28,8 @@ const router = new VueRouter({
             meta: { authRequired: true }
         },
         {
-            path: '/editor',
-            component: () => import('../views/EditorPage.vue'),
+            path: '/overlay',
+            component: () => import('../views/OverlayPage.vue'),
             meta: { authRequired: true }
         },
         {

@@ -9,7 +9,7 @@
     <div class="navigations">
       <template v-if="isUserLogin">
         <router-link to="/main">Home</router-link>
-        <router-link to="/editor">Editor</router-link>
+        <router-link to="/overlay">Overlay</router-link>
         <a href="javascript:;" @click="logoutUser" class="logout-button">
           Logout
         </a>
@@ -50,7 +50,7 @@ header {
   align-items: center;
   padding: 10px 20px;
   background-color: #36393f;
-  z-index: 2;
+  z-index: 2000;
   height: 60px;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.6));
   border-bottom: 1px solid black;

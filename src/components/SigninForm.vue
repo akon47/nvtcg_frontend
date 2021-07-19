@@ -10,7 +10,7 @@
         <div>
           <label for="password">Password</label>
           <input
-            type="text"
+            type="password"
             id="password"
             v-model="password"
             autocomplete="off"

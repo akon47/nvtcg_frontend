@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setInterceptors } from "./common/interceptors";
 
-export const apiUrl = 'http://localhost:2000/';
+const apiUrl = 'http://localhost:2000/';
 
 function createInstance() {
     const instance = axios.create({
@@ -15,6 +15,10 @@ function createInstanceWithAuth(url) {
         baseURL: `${apiUrl.replace('localhost', location.hostname)}${url}`
     });
     return setInterceptors(instance);
+}
+
+export function getBaseApiUrl() {
+    return `${apiUrl.replace('localhost', location.hostname)}`;
 }
 
 export const instance = createInstance();

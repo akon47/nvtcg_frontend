@@ -4,14 +4,14 @@
       v-if="$store.getters.isLoadingCams | isLoading"
     ></loading-spinner>
     <div v-else class="form-wrapper form-wrapper-sm">
-      <h1>NVT CG</h1>
+      
       <form
         @submit.prevent="submitForm"
         class="form"
         :class="{ mobile: $isMobile() }"
       >
         <div>
-          <label for="username">Target</label>
+          <label for="username">Target NVT</label>
           <select v-model="target">
             <option
               v-for="cam in $store.state.cams"
@@ -29,7 +29,7 @@
         <div>
           <label for="password">Password</label>
           <input
-            type="text"
+            type="password"
             id="password"
             v-model="password"
             autocomplete="off"
@@ -37,30 +37,12 @@
         </div>
         <button type="submit" class="btn">Apply</button>
       </form>
-      <form class="form" :class="{ mobile: $isMobile() }">
-        <div>
-          <label for="attachment" style="padding-top: 20px"
-            >Overlay Image</label
-          >
-          <div class="filebox">
-            <label for="attachment">Upload</label>
-            <input
-              @change="handleFileChange"
-              id="attachment"
-              class="attachment-file"
-              type="file"
-              accept=".png"
-            />
-          </div>
-        </div>
-      </form>
     </div>
   </div>
 </template>
 
 <script>
 import { setTarget, getTarget } from "../api/onvif";
-import { uploadOverlayImage } from "../api/overlay";
 
 import LoadingSpinner from "../components/common/LoadingSpinner.vue";
 export default {
@@ -111,18 +93,6 @@ export default {
       }
 
       this.isLoading = false;
-    },
-    async handleFileChange(e) {
-      const file = e.target.files[0];
-      try {
-        if (file) {
-          this.isLoading = true;
-          await uploadOverlayImage(file);
-          this.isLoading = false;
-        }
-      } catch (error) {
-        alert(error.response.statusText);
-      }
     },
   },
 };

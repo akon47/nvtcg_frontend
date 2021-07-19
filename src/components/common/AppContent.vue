@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100">
+  <div class="content-container">
     <transition name="component-fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -14,6 +14,11 @@ export default {
 </script>
 
 <style scoped>
+.content-container {
+  position: relative;
+  height: 100%;
+}
+
 .content {
   background-color: #313131;
 }
