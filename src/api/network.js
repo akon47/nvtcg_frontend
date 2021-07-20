@@ -4,4 +4,8 @@ function setNetworkConfig(config) {
     return network.put('/', config);
 }
 
-export { setNetworkConfig };
+function getNetworkConfig() {
+    return network.get('/');
+}
+
+export { setNetworkConfig, getNetworkConfig };

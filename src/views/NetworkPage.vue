@@ -73,16 +73,20 @@
 </template>
 
 <script>
-import { setNetworkConfig } from "../api/network.js";
+import { setNetworkConfig, getNetworkConfig } from "../api/network.js";
+import LoadingSpinner from "../components/common/LoadingSpinner.vue";
 
 export default {
+  components: {
+    LoadingSpinner,
+  },
   data() {
     return {
       address: "",
       netmask: "",
       gateway: "",
-      dns1: "1.1.1.1",
-      dns2: "8.8.8.8",
+      dns1: "",
+      dns2: "",
       dhcp: true,
       isLoading: false,
     };
@@ -92,7 +96,7 @@ export default {
       this.isLoading = true;
       try {
         await setNetworkConfig({
-          ip: this.address,
+          address: this.address,
           netmask: this.netmask,
           gateway: this.gateway,
           nameservers: [this.dns1, this.dns2],
@@ -104,6 +108,28 @@ export default {
         this.isLoading = false;
       }
     },
+  },
+  async created() {
+    this.isLoading = true;
+    try {
+      const { data } = await getNetworkConfig();
+      this.address = data.address;
+      this.netmask = data.netmask;
+      this.gateway = data.gateway;
+      this.dns1 = data.dns1;
+      this.dns2 = data.dns2;
+      this.dhcp = data.dhcp;
+
+    } catch (error) {
+      this.address = '';
+      this.netmask = '';
+      this.gateway = '';
+      this.dns1 = '';
+      this.dns2 = '';
+      this.dhcp = false;
+    } finally {
+      this.isLoading = false;
+    }
   },
 };
 </script>

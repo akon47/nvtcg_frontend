@@ -93,6 +93,10 @@ a:hover {
   border-radius: 3px;
   padding: 30px 30px;
   border: 1px solid rgb(43, 45, 49);
+
+  margin: auto;
+  overflow: auto;
+  max-height: 100%;
 }
 
 .form-wrapper-sm .page-header {

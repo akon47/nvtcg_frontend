@@ -17,6 +17,7 @@ export default {
 .content-container {
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .content {

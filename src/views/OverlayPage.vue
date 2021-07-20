@@ -145,9 +145,9 @@ export default {
 .contents {
   position: relative;
   display: flex;
-  align-items: center; /* 수직 정렬 */
-  flex-direction: row; /* default: row */
-  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 
   max-width: 1020px;
   margin: 0 auto;
@@ -172,7 +172,7 @@ export default {
   border: 2px solid rgb(43, 45, 49);
   overflow: auto;
   overflow-x: hidden;
-  min-height: 80px;
+  min-height: 140px;
   height: calc(100vh - 600px);
 }
 
