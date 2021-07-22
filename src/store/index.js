@@ -54,9 +54,14 @@ export default new Vuex.Store({
         },
         async discoveryCams({ commit }) {
             commit("setLoadingCams", true);
-            const { data } = await getDevices();
-            commit("setCams", data);
-            return data;
+            try {
+                const { data } = await getDevices();
+                commit("setCams", data);
+                return data;
+            } catch(error) {
+                console.error(error);
+                commit("setLoadingCams", false);
+            } 
         }
     }
 });

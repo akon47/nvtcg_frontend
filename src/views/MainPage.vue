@@ -66,13 +66,13 @@ export default {
     } catch (error) {
       switch (error.response.status) {
         case 401:
+          this.$store.dispatch("Signout");
+          this.$router.push("/");
           break;
         default:
           alert(error.message);
           break;
       }
-      this.$store.dispatch("Signout");
-      this.$router.push("/");
     } finally {
       this.isLoading = false;
     }
